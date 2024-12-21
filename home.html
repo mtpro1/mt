@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MT Pro - Home Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            padding: 20px; /* Menambahkan padding untuk tampilan yang lebih baik */
+        }
+
+        #homeContainer {
+            text-align: center;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        #homeContainer h1 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        #navbar {
+            background-color: #5cb85c;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        #navbar a:hover {
+            color: #dff0d8;
+            text-decoration: underline;
+        }
+
+        #homeContainer p {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        #logoutButton {
+            padding: 10px 20px;
+            background-color: #d9534f;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #logoutButton:hover {
+            background-color: #c9302c;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-top: 1px solid #ccc;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Media Queries untuk responsivitas */
+        @media (max-width: 600px) {
+            #homeContainer h1 {
+                font-size: 2em; /* Mengurangi ukuran font pada layar kecil */
+            }
+
+            #homeContainer p {
+                font-size: 1em; /* Mengurangi ukuran font pada layar kecil */
+            }
+
+            #logoutButton {
+                padding: 8px 16px; /* Mengurangi padding pada tombol logout */
+                font-size: 14px; /* Mengurangi ukuran font pada tombol logout */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="homeContainer">
+        <h1>Welcome to MT Pro!</h1>
+        <div id="navbar">
+            <a href="home.html">Home</a>
+            <a href="#">About</a>
+            <a href="livestreaming.html">Livestreaming</a>
+            <a href="#">Contact</a>
+        </div>
+        <p>This is a protected page that requires login.</p>
+        <p>Here you can find various services and information about MT Pro.</p>
+        <button id="logoutButton">Logout</button>
+
+        <footer>
+            <p>&copy; 2024 MT Pro. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Menampilkan halaman home jika sudah login
+        if (!localStorage.getItem('loggedIn')) {
+            // Jika belum login, arahkan kembali ke halaman login
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            // Hapus status login dari localStorage
+            localStorage.removeItem('loggedIn');
+            // Arahkan kembali ke halaman login
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
